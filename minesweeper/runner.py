@@ -46,6 +46,11 @@ revealed = set()
 flags = set()
 lost = False
 
+# Auto reset
+reset_length = 7
+reset_start = 0
+reset_end = 0
+
 # Show instructions initially
 instructions = True
 
@@ -202,12 +207,13 @@ while True:
             time.sleep(0.2)
 
         # Reset game state
-        elif resetButton.collidepoint(mouse):
+        elif resetButton.collidepoint(mouse) or reset_end - reset_start >= reset_length:
             game = Minesweeper(height=HEIGHT, width=WIDTH, mines=MINES)
             ai = MinesweeperAI(height=HEIGHT, width=WIDTH)
             revealed = set()
             flags = set()
             lost = False
+            reset_start = reset_end = 0
             continue
 
         # User-made move
@@ -222,10 +228,19 @@ while True:
     # Make move and update AI knowledge
     if move:
         if game.is_mine(move):
+            print("inside of game.is")
             lost = True
         else:
             nearby = game.nearby_mines(move)
             revealed.add(move)
             ai.add_knowledge(move, nearby)
+
+    if (lost):
+        print("resetting in " + str((reset_length - (reset_end - reset_start))))
+        if (reset_start == 0):
+            reset_start = time.time()
+            reset_end = time.time()
+        elif (reset_end - reset_start < reset_length):
+            reset_end = time.time()
 
     pygame.display.flip()
