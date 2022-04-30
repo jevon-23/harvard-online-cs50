@@ -15,8 +15,11 @@ Then to run the game execute: <br>
 <br> <br>
 
 # Game Details and debugging tips
-Press play game, and starts immediately. On fail, hover over restart and it retries.
-<br>
+Press play game, and starts immediately. On fail, either hover over the restart button to force a restart of wait 7 seconds for auto restart.
+<br><br>
+If you want to update the auto restart time, on line 50 of runner.py update:
+```reset_length = 7```
+
 If anything doesn't work in installation/ execution, you can check out the direct source to see how to run in with the link up above.
 <br><br>
 # Implementation Details:
