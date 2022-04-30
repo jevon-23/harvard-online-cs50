@@ -3,6 +3,10 @@
 An AI that plays tic-tac-toe against its opponent (user). [Starter code & problem.](https://cs50.harvard.edu/ai/2020/projects/0/tictactoe/)
 <br><br>
 # Installation and Execution
+
+First pull down repo with and go into repo with : <br>
+```git clone https://github.com/jevon-23/harvard-online-cs50 && cd harvard-online-cs50/tictactoe```
+
 To install the requirements, first execute:<br>
 ```pip3 install -r requirements.txt```
 <br><br>
